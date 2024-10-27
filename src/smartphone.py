@@ -1,33 +1,16 @@
-class Product:
-    name: str
-    description: str
-    price: float
-    quantity: int
+from src.product import Product
 
-    def __init__(self, name, description, price, quantity):
-        self.name = name
-        self.description = description
-        self.__price = price
-        self.quantity = quantity
 
-    def __str__(self):
-        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+class Smartphone(Product):
+
+    def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
 
     def __add__(self, other):
-        if type(other) is Product:
-            return self.__price * self.quantity + other.__price * other.quantity
+        if type(other) is Smartphone:
+            return self.price * self.quantity + other.price * other.quantity
         raise TypeError
-
-    @classmethod
-    def new_product(cls, name, description, price, quantity):
-        return cls(name, description, price, quantity)
-
-    @property
-    def price(self):
-        return self.__price
-
-    @price.setter
-    def price(self, price):
-        if price <= 0:
-            print("Цена не должна быть нулевая или отрицательная")
-            return
