@@ -31,7 +31,7 @@ def category_01(product_smart_1, product_smart_2, product_smart_3):
 
 
 @pytest.fixture
-def category_1():
+def category_1(product_smart_1, product_smart_2, product_smart_3):
     return Category(
         "Смартфоны",
         "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни",
